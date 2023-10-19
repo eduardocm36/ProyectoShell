@@ -13,7 +13,7 @@ import java.util.List;
 
 public class UsersDAO implements UserInterface {
 
-    private JdbcTemplate jdbcTemplate;
+    private final JdbcTemplate jdbcTemplate;
 
     @Autowired
     public UsersDAO(JdbcTemplate jdbcTemplate) {

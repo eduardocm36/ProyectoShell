@@ -11,6 +11,8 @@ public class ResponseServe {
 
     private String STATUS;
     private String MESSAGE;
+    private String FIELD;
+    private String OBJECT;
 
     public ResponseServe(String STATUS, String MESSAGE) {
         this.STATUS = STATUS;
@@ -31,5 +33,21 @@ public class ResponseServe {
 
     public void setMESSAGE(String MESSAGE) {
         this.MESSAGE = MESSAGE;
+    }
+
+    public String getFIELD() {
+        return FIELD;
+    }
+
+    public void setFIELD(String FIELD) {
+        this.FIELD = FIELD;
+    }
+
+    public String getOBJECT() {
+        return OBJECT;
+    }
+
+    public void setOBJECT(String OBJECT) {
+        this.OBJECT = OBJECT;
     }
 }

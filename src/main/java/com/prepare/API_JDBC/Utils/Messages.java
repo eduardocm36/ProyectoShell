@@ -13,9 +13,9 @@ public enum Messages {
     public ResponseServe obtenerError(){
         switch (this) {
             case NOT_FOUND:
-                return new ResponseServe("401",  "Objeto no encontrado");
+                return new ResponseServe("401 NOT_FOUND",  "Objeto no encontrado");
             case BAD_REQUEST:
-                return new ResponseServe("400",  "Error al obtener datos");
+                return new ResponseServe("400 BAD_REQUEST",  "Algunos datos son inválidos");
             default:
                 return null;
 

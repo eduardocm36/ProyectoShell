@@ -1,11 +1,22 @@
 package com.prepare.API_JDBC.Models;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+
 import java.util.Date;
 
 public class Users {
 
     private Long id, idRol;
-    private String nombres, apePaterno, apeMaterno, direccion, dni, codigo, estadoCivil;
+    @NotBlank
+    private String nombres, apePaterno, apeMaterno;
+    private String direccion;
+    @Size(max = 8, min = 8)
+    @NotBlank
+    private String dni;
+    @NotBlank
+    private String codigo;
+    private String estadoCivil;
     private Date fechaNacimiento;
     private Long estadoComunal; //1: activo - 0: inactivo
 

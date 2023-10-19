@@ -2,6 +2,7 @@ package com.prepare.API_JDBC.Services;
 
 import com.prepare.API_JDBC.DAO.RolesDAO;
 import com.prepare.API_JDBC.DAO.UsersDAO;
+import com.prepare.API_JDBC.Models.ResponseServe;
 import com.prepare.API_JDBC.Models.Rol;
 import com.prepare.API_JDBC.Models.Users;
 import com.prepare.API_JDBC.Utils.Messages;
@@ -15,8 +16,8 @@ import java.util.HashMap;
 
 public class UserService {
 
-    private JdbcTemplate jdbcTemplate;
-    private UsersDAO usersDAO;
+    private final JdbcTemplate jdbcTemplate;
+    private final UsersDAO usersDAO;
 
     public UserService(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
@@ -41,6 +42,14 @@ public class UserService {
         return eCivil;
     }
 
+    private void validUser(Users user){
+        try {
+            Integer.valueOf(user.getDni());
+        } catch (Exception error){
+            throw new RuntimeException(String.valueOf(Messages.BAD_REQUEST));
+        }
+    }
+
     public ResponseEntity listarService(){
         try {
             return new ResponseEntity<>(usersDAO.listar(), HttpStatus.OK);
@@ -49,16 +58,18 @@ public class UserService {
         }
     }
 
-    public void insertService(Users user){
+    public ResponseEntity insertService(Users user){
        String eCivil = getEstadoCivil(user.getEstadoCivil());
-       // VALIDACION PARA INSERTAR DATOS
-        usersDAO.insertar(user, eCivil);
+       validUser(user);
+       usersDAO.insertar(user, eCivil);
+       return new ResponseEntity<>(new ResponseServe("200", "Usuario Guardado"), HttpStatus.OK);
     }
 
-    public void updateService(Users user){
+    public ResponseEntity updateService(Users user){
         String eCivil = getEstadoCivil(user.getEstadoCivil());
-        // VALIDACION PARA ACTUALIZAR DATOS
+        validUser(user);
         usersDAO.modificar(user, eCivil);
+        return new ResponseEntity<>(new ResponseServe("200", "Usuario Actualizado"), HttpStatus.OK);
     }
 
     public ResponseEntity getObjectService(int id){
