@@ -1,10 +1,10 @@
-package com.prepare.API_JDBC.DAO.InterfacesDAO;
+package com.prepare.API_JDBC.DAO;
 
 import com.prepare.API_JDBC.Models.Users;
 
 import java.util.List;
 
-public interface UserInterface {
+public interface UserDAO {
 
     List<Users> listar();
 

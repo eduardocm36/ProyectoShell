@@ -1,24 +1,25 @@
-package com.prepare.API_JDBC.DAO;
+package com.prepare.API_JDBC.DAO.Implements;
 
-import com.prepare.API_JDBC.DAO.InterfacesDAO.UserInterface;
+import com.prepare.API_JDBC.DAO.UserDAO;
 import com.prepare.API_JDBC.DAO.RowMapers.UserRowMapper;
 import com.prepare.API_JDBC.Models.Users;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
 
-import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.List;
 
-public class UsersDAO implements UserInterface {
-
-    private final JdbcTemplate jdbcTemplate;
+@Repository
+public class UsersDAOImpl implements UserDAO {
 
     @Autowired
+    private JdbcTemplate jdbcTemplate;
+
+    /*@Autowired
     public UsersDAO(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
-    }
+    }*/
 
     @Override
     public List<Users> listar(){

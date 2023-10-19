@@ -1,22 +1,19 @@
-package com.prepare.API_JDBC.DAO;
+package com.prepare.API_JDBC.DAO.Implements;
 
-import com.prepare.API_JDBC.DAO.InterfacesDAO.RolInterface;
+import com.prepare.API_JDBC.DAO.RolDAO;
 import com.prepare.API_JDBC.DAO.RowMapers.RolRowMapper;
-import com.prepare.API_JDBC.DAO.RowMapers.UserRowMapper;
 import com.prepare.API_JDBC.Models.Rol;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-public class RolesDAO implements RolInterface {
-
-    private JdbcTemplate jdbcTemplate;
+@Repository
+public class RolesDAOImpl implements RolDAO {
 
     @Autowired
-    public RolesDAO(JdbcTemplate jdbcTemplate) {
-        this.jdbcTemplate = jdbcTemplate;
-    }
+    private JdbcTemplate jdbcTemplate;
 
     @Override
     public List<Rol> listar() throws Exception {

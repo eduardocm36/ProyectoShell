@@ -1,10 +1,10 @@
-package com.prepare.API_JDBC.DAO.InterfacesDAO;
+package com.prepare.API_JDBC.DAO;
 
 import com.prepare.API_JDBC.Models.Rol;
 
 import java.util.List;
 
-public interface RolInterface {
+public interface RolDAO {
 
     List<Rol> listar() throws Exception;
 
